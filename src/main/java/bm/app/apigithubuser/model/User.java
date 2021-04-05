@@ -1,10 +1,9 @@
 package bm.app.apigithubuser.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+public class User implements Comparable<User>{
 
     @SerializedName("full_name")
     @Expose
@@ -15,9 +14,9 @@ public class User {
     @SerializedName("clone_url")
     @Expose
     private String clone_url;
-    @SerializedName("stargazers_count")
+    @SerializedName(value = "stargazers_count")
     @Expose
-    private Integer stargazers_count;
+    private Integer stars;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -25,12 +24,12 @@ public class User {
     public User() {
     }
 
-    public Integer getStargazers_count() {
-        return stargazers_count;
+    public Integer getStars() {
+        return stars;
     }
 
-    public void setStargazers_count(Integer stargazers_count) {
-        this.stargazers_count = stargazers_count;
+    public void setStars(Integer stars) {
+        this.stars = stars;
     }
 
     public String getClone_url() {
@@ -65,4 +64,8 @@ public class User {
         this.createdAt = createdAt;
     }
 
+    @Override
+    public int compareTo(User user) {
+        return this.stars - user.stars;
+    }
 }

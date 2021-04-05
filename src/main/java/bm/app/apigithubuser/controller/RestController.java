@@ -19,8 +19,13 @@ public class RestController {
         this.userService = userService;
     }
 
-    @GetMapping("/users/{user}/repos")
-    public User[] getUserData(@PathVariable String user) throws IOException {
-        return userService.fetchUser(user);
+    @GetMapping("/users/{user}/repos/asc")
+    public User[] getUserDataStarsDescending(@PathVariable String user) throws IOException {
+        return userService.fetchUserByStarsDescendingOrder(user);
+    }
+
+    @GetMapping("/users/{user}/repos/desc")
+    public User[] getUserDataStarsAscending(@PathVariable String user) throws IOException {
+        return userService.fetchUserByStarsAscendingOrder(user);
     }
 }
