@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
@@ -24,22 +25,29 @@ public class UserService {
     }
 
     public User[] fetchUserByStarsDescendingOrder(String username) throws IOException {
-        return fetchUser(username);
+        User[] user = fetchUser(username);
+        Arrays.sort(user);
+        return user;
     }
 
     public User[] fetchUser(String username) throws IOException {
 
-        URL url = new URL("https://api.github.com/users/" + username + "/repos");
-        InputStreamReader reader = new InputStreamReader(url.openStream());
+        InputStreamReader reader = new InputStreamReader(provideTheUrl(username).openStream());
 
         User[] user = new Gson().fromJson(reader, User[].class);
 
         if (user == null) {
-            logger.error("Could not return the result.");
+            logger.error("No input provided.");
             return null;
         } else {
             logger.info("The output returned.");
             return user;
         }
     }
+
+    private URL provideTheUrl(String username) throws MalformedURLException {
+        URL url = new URL("https://api.github.com/users/" + username + "/repos");
+        return url;
+    }
+
 }

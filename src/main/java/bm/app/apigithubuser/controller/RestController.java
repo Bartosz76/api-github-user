@@ -2,6 +2,7 @@ package bm.app.apigithubuser.controller;
 
 import bm.app.apigithubuser.model.User;
 import bm.app.apigithubuser.service.UserService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.security.auth.login.Configuration;

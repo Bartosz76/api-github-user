@@ -24,6 +24,14 @@ public class User implements Comparable<User>{
     public User() {
     }
 
+    public User(String full_name, String description, String clone_url, Integer stars, String createdAt) {
+        this.full_name = full_name;
+        this.description = description;
+        this.clone_url = clone_url;
+        this.stars = stars;
+        this.createdAt = createdAt;
+    }
+
     public Integer getStars() {
         return stars;
     }
@@ -67,5 +75,16 @@ public class User implements Comparable<User>{
     @Override
     public int compareTo(User user) {
         return this.stars - user.stars;
+    }
+
+    @Override
+    public String toString() {
+        return "REPOSITORY: " +
+                "Full name: '" + full_name + '\'' +
+                ", Description: '" + description + '\'' +
+                ", URL to clone: '" + clone_url + '\'' +
+                ", The number of stars: '" + stars + '\'' +
+                ", Created at: '" + createdAt + '\'' +
+                '.';
     }
 }

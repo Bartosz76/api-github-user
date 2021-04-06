@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="landingpage.css">
+</head>
+<style>
+    body {
+        background-color: lightskyblue;
+    }
+</style>
+<body>
+<div id="header">GitHub's user's repositories provider.</div>
+<div class="subheader1">Please, provide the name of the user whose repositories you'd like to see.</div>
+<div class="subheader2">Then choose whether you'd like to see them sorted by their stars in an ascending or descending order.</div>
+    <form action="/ascending" method="post">
+        <div class="input">
+        <input type="text" name="user" placeholder="Provide the username">
+        </div>
+        <div class="buttons">
+        <input type="submit" value="Ascending">
+        <input type="submit" formaction="/descending" value="Descending">
+        </div>
+    </form>
+</body>
+</html>
